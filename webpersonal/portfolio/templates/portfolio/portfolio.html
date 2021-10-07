@@ -1,0 +1,24 @@
+{%extends 'core/base.html'%}
+<!-- Cabecera -->
+{%block image%}{% load static %}{% static 'core/img/home-bg.jpg' %}{%endblock%}
+{%block headers%}
+  <h1>Nuestras colaboraciones</h1>
+  <span class="subheading">Desarrollo Web</span>
+{%endblock%}
+<!-- Contenido -->
+{%block content %}
+    {%for portfolio in portafolios%}
+      <div class="row project">
+        <div class="col-lg-3 col-md-4 offset-lg-1">
+          <img src="{{portfolio.image.url}}" class="img-fluid" alt="imagen">
+        </div>
+         <div class="col-lg-7 col-md-8">
+          <h2 class="section-heading title">{{portfolio.title}}</h2>
+           <p>{{portfolio.description}}</p>
+             {% if portfolio.url %}
+                <a href="{{portfolio.url}}">Ver +</a>
+             {% endif %}
+        </div>
+       </div>
+    {%endfor%}
+{%endblock%}
